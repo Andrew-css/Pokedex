@@ -1,14 +1,19 @@
 <template>
   <div id="body">
-    <div v-if="mostrar">
-      <h1 id="poke">POKEDEX</h1>
-      <div v-for="(pokemon, index) in pokemonList" :key="index" class="pokemon-card">
-        <h1>#{{ pokemon.numero }}</h1>
-        <img :src="pokemon.img" alt="">
-        <h1>{{ pokemon.nombre }}</h1>
-        <h1>Tipo: {{ pokemon.tipo_pk.join(', ') }}</h1>
-        <button @click="ObtenerUrlPokemon(pokemon)">Detalles</button>
+    <div v-if="mostrar" class="Primero">
+      <div>
+        <h1 id="poke">POKEDEX</h1>
       </div>
+      <div class="ContainerTarjetas">
+        <div v-for="(pokemon, index) in pokemonList" :key="index" class="pokemon-card"  >
+          <h1>#{{ pokemon.numero }}</h1>
+          <img :src="pokemon.img" alt="">
+          <h1>{{ pokemon.nombre }}</h1>
+          <h1>Tipo: {{ pokemon.tipo_pk.join(', ') }}</h1>
+          <button @click="ObtenerUrlPokemon(pokemon)">Detalles</button>
+        </div>
+      </div>
+
     </div>
     <div class="estadisticas" v-if="mostrardos">
       <h1>POKEDEX</h1>
@@ -193,6 +198,18 @@ button:hover {
   background-color: rgb(21, 165, 231);
 }
 
+.ContainerTarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.Primero{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+}
 .estadisticas {
   display: flex;
   flex-direction: column;
@@ -269,6 +286,7 @@ button:hover {
   padding: 10px;
   margin: 10px;
   background-color: #f5f5f5;
+  width: 250px;
 }
 
 .pokemon-card img {
