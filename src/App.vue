@@ -26,7 +26,10 @@
           <button @click="ObtenerUrlPokemon(pokemon)">Detalles</button>
         </div>
       </div>
-      <button>Cargar más...</button>
+      <div>
+        <button @click="cargarMasPokemones(50)">Cargar más...</button>
+      </div>
+
     </div>
     <div class="estadisticas" v-if="mostrardos">
       <div id="contenidopokemon">
@@ -180,6 +183,32 @@ async function obtenerPokemones() {
   }
 }
 
+async function cargarMasPokemones(cantidad) {
+  const startIndex = pokemonList.value.length + 1;
+  const endIndex = startIndex + cantidad - 1;
+
+  for (let i = startIndex; i <= endIndex; i++) {
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    const data = response.data
+
+    pokemonList.value.push({
+      img: data.sprites.other["official-artwork"].front_default,
+      numero: data.id,
+      nombre: data.name,
+      hp: data.stats[0].base_stat,
+      attack: data.stats[1].base_stat,
+      defense: data.stats[2].base_stat,
+      specialattack: data.stats[3].base_stat,
+      specialdefense: data.stats[4].base_stat,
+      speed: data.stats[5].base_stat,
+      tipo_pk: data.types.map((element) => element.type.name),
+    })
+  }
+}
+
+
+
+
 
 function getPokemonCardClasses(pokemon) {
   const classes = pokemon.tipo_pk.map((tipo) => tipo.toLowerCase()) // Convierte los tipos a minúsculas
@@ -263,7 +292,7 @@ function getPokemonCardClasses(pokemon) {
   align-items: center;
   border-radius: 12px;
   padding: 5px;
-  
+  width: 50px;
 }
 
 .input__button__shadow:hover {
@@ -337,7 +366,7 @@ button:hover {
 #imgDetalle {
   width: 450px;
   height: 450px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8))
+ 
 }
 
 .barra1 {
