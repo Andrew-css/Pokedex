@@ -39,6 +39,9 @@ body {
   background-color:rgb(0, 0, 0);
   justify-content: center;
   color: white;
+  background-image: url(./assets/images.jpg);
+  background-size: 85%;
+
 }
 
 /* h1 {
