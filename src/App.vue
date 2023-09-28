@@ -369,6 +369,7 @@ button:hover {
  
 }
 
+
 .barra1 {
   background-color: rgb(0, 110, 118);
   width: 800px;
@@ -430,6 +431,7 @@ button:hover {
 #tipopok {
   display: flex;
   gap: 30px;
+  margin-right: 60%;
 }
 
 .pokemon-card {
@@ -442,7 +444,7 @@ button:hover {
   margin: 10px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8));
   background-size: cover;
-  width: 250px;
+  width: 300px;
   text-transform: capitalize;
 
 
@@ -457,7 +459,7 @@ button:hover {
   font-size: 24px;
   color: #333;
 }
-/* Tipos de Pokémon */
+
 .water {
   background-color: blue;
 }
@@ -498,7 +500,7 @@ button:hover {
   background-color: pink;
 }
 
-/* Clases para combinaciones de tipos */
+
 .water.grass {
   background: linear-gradient(to bottom, blue, green);
 }
