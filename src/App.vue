@@ -508,6 +508,7 @@ button:hover {
 
 .fairy {
   background-color: pink;
+  color: black;
 }
 
 .ghost{
