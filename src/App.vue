@@ -543,6 +543,29 @@ button:hover {
   background: linear-gradient(to bottom, rgb(243, 93, 93), gray);
 }
 
+.water.electric{
+  background: linear-gradient(to bottom, rgb(35, 130, 255), yellow);
+}
+
+.water.fairy{
+  background: linear-gradient(to bottom, rgb(35, 130, 255), pink);
+}
+
+.grass.flying{
+  background: linear-gradient(to bottom, rgb(61, 255, 61), gray);
+}
+
+.water.ground{
+  background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(128, 119, 119));
+}
+.water.psychic{
+  background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(128, 119, 119));
+}
+
+.water.poison{
+  background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(205, 152, 255));
+}
+
 .fire.flying.pokemon-card h1 {
   color: white;
 }
