@@ -18,7 +18,8 @@
         </div>
       </div>
       <div class="ContainerTarjetas">
-        <div v-for="(pokemon, index) in filteredPokemonList" :key="index" :class="getPokemonCardClasses(pokemon)" class="pokemon-card">
+        <div v-for="(pokemon, index) in filteredPokemonList" :key="index" :class="getPokemonCardClasses(pokemon)"
+          class="pokemon-card">
           <h1 class="h1numero">#{{ pokemon.numero }}</h1>
           <img :src="pokemon.img" alt="">
           <h1 style="color: black;">{{ pokemon.nombre }}</h1>
@@ -36,13 +37,15 @@
         <div id="contenido2">
           <img :src="img" alt="" id="imgDetalle">
         </div>
-          <div id="contenido21">
-            <h1 id="numeropok"> #{{ numero }}</h1>
-            <h1 id="nombrepok" class="nombrepokemon">{{ nombre }}</h1>
-          </div>
+        <div id="contenido21">
+          <h1 id="numeropok"> #{{ numero }}</h1>
+          <h1 id="nombrepok" class="nombrepokemon">{{ nombre }}</h1>
+        </div>
       </div>
       <div id="tipopok">
-        <h1 v-for="(item, index) in tipo_pk" :key="index" style=" text-transform:capitalize;">{{ item }}</h1>
+        <h1 v-for="(item, index) in tipo_pk" :key="index" :class="item.toLowerCase()" id="tipocolor">
+          {{ item }}
+        </h1>
       </div>
 
       <div id="estat">
@@ -280,7 +283,7 @@ function getPokemonCardClasses(pokemon) {
     radial-gradient(at 90% 65%, hsla(153, 70%, 64%, 1) 0px, transparent 50%),
     radial-gradient(at 91% 83%, hsla(283, 74%, 69%, 1) 0px, transparent 50%),
     radial-gradient(at 72% 91%, hsla(213, 75%, 75%, 1) 0px, transparent 50%);
-  
+
 }
 
 .input__button__shadow {
@@ -366,7 +369,7 @@ button:hover {
 #imgDetalle {
   width: 450px;
   height: 450px;
- 
+
 }
 
 
@@ -401,9 +404,9 @@ button:hover {
   align-items: center;
   margin-right: 300px;
 }
-  
 
-#contenido21{
+
+#contenido21 {
   display: grid;
   width: 100%
 }
@@ -449,12 +452,13 @@ button:hover {
 
 }
 
-.h1numero{
+.h1numero {
   background-color: rgba(0, 0, 0, 0.726);
   padding: 5px;
   border-radius: 5px;
   color: white;
 }
+
 .pokemon-card img {
   width: 150px;
   height: 150px;
@@ -462,8 +466,6 @@ button:hover {
 
 .pokemon-card h1 {
   font-size: 24px;
-  
-
 }
 
 .water {
@@ -492,10 +494,12 @@ button:hover {
 
 .normal {
   background-color: white;
+  color: black;
 }
 
 .electric {
   background-color: yellow;
+  color: black;
 }
 
 .ground {
@@ -506,7 +510,19 @@ button:hover {
   background-color: pink;
 }
 
+.ghost{
+  background-color: white;
+  color: black;
+}
 
+.ice{
+  background-color: aqua;
+  color: black;
+}
+
+.steel{
+  background-color: gray;
+}
 .water.grass {
   background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(137, 255, 137));
 }
@@ -543,42 +559,56 @@ button:hover {
   background: linear-gradient(to bottom, rgb(243, 93, 93), gray);
 }
 
-.water.electric{
+.water.electric {
   background: linear-gradient(to bottom, rgb(35, 130, 255), yellow);
 }
 
-.water.fairy{
+.water.fairy {
   background: linear-gradient(to bottom, rgb(35, 130, 255), pink);
 }
 
-.grass.flying{
+.grass.flying {
   background: linear-gradient(to bottom, rgb(61, 255, 61), gray);
 }
 
-.water.ground{
-  background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(128, 119, 119));
-}
-.water.psychic{
+.water.ground {
   background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(128, 119, 119));
 }
 
-.water.poison{
+.water.psychic {
+  background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(128, 119, 119));
+}
+
+.water.poison {
   background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(205, 152, 255));
+}
+
+.ghost.poison{
+  background: linear-gradient(to bottom, white, rgb(205, 152, 255));
+}
+
+.water.ice{
+  background: linear-gradient(to bottom, rgb(35, 130, 255), aqua);
+}
+
+.electric.steel{
+  background: linear-gradient(to bottom, yellow, gray);
 }
 
 .fire.flying.pokemon-card h1 {
   color: white;
 }
+
 .grass.poison.pokemon-card h1 {
   color: white;
 }
 
-.poison.ground.pokemon-card h1{
+.poison.ground.pokemon-card h1 {
   color: white;
 }
 
 .poison.flying.pokemon-card h1 {
- color: white
+  color: white
 }
 
 .bug.grass.pokemon-card h1 {
@@ -592,4 +622,10 @@ button:hover {
 .bug.flying.pokemon-card h1 {
   color: white;
 }
+
+#tipocolor{
+  border-radius: 5px;
+  padding: 5px;
+}
+
 </style>

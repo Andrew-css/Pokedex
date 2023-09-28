@@ -41,7 +41,7 @@ body {
   color: white;
   background-image: url(./assets/images.jpg);
   background-size: 90%;
-
+  text-transform: capitalize;
 }
 
 /* h1 {
