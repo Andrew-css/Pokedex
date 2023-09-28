@@ -444,9 +444,8 @@ button:hover {
   margin: 10px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8));
   background-size: cover;
-  width: 300px;
+  width: 250px;
   text-transform: capitalize;
-
 
 }
 
