@@ -19,7 +19,7 @@
       </div>
       <div class="ContainerTarjetas">
         <div v-for="(pokemon, index) in filteredPokemonList" :key="index" :class="getPokemonCardClasses(pokemon)" class="pokemon-card">
-          <h1>#{{ pokemon.numero }}</h1>
+          <h1 class="h1numero">#{{ pokemon.numero }}</h1>
           <img :src="pokemon.img" alt="">
           <h1>{{ pokemon.nombre }}</h1>
           <h1>Tipo: {{ pokemon.tipo_pk.join(', ') }}</h1>
@@ -449,6 +449,12 @@ button:hover {
 
 }
 
+.h1numero{
+  background-color: rgba(0, 0, 0, 0.726);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
 .pokemon-card img {
   width: 150px;
   height: 150px;
@@ -456,7 +462,8 @@ button:hover {
 
 .pokemon-card h1 {
   font-size: 24px;
-  color: #333;
+  
+
 }
 
 .water {
@@ -501,11 +508,11 @@ button:hover {
 
 
 .water.grass {
-  background: linear-gradient(to bottom, blue, green);
+  background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(137, 255, 137));
 }
 
 .grass.poison {
-  background: linear-gradient(to bottom, green, purple);
+  background: linear-gradient(to bottom, rgb(61, 255, 61), rgb(196, 165, 255));
 }
 
 .fire.flying {
@@ -513,7 +520,7 @@ button:hover {
 }
 
 .poison.ground {
-  background: linear-gradient(to bottom, purple, black);
+  background: linear-gradient(to bottom, rgb(205, 152, 255), rgb(0, 0, 0));
 }
 
 .poison.flying {
@@ -521,11 +528,11 @@ button:hover {
 }
 
 .bug.grass {
-  background: linear-gradient(to bottom, brown, green);
+  background: linear-gradient(to bottom, rgb(243, 93, 93), rgb(143, 255, 143));
 }
 
 .bug.poison {
-  background: linear-gradient(to bottom, brown, purple);
+  background: linear-gradient(to bottom, rgb(243, 93, 93), rgb(196, 165, 255));
 }
 
 .normal.flying {
@@ -533,7 +540,7 @@ button:hover {
 }
 
 .bug.flying {
-  background: linear-gradient(to bottom, brown, gray);
+  background: linear-gradient(to bottom, rgb(243, 93, 93), gray);
 }
 
 .fire.flying.pokemon-card h1 {
