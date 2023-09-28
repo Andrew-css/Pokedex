@@ -21,8 +21,8 @@
         <div v-for="(pokemon, index) in filteredPokemonList" :key="index" :class="getPokemonCardClasses(pokemon)" class="pokemon-card">
           <h1 class="h1numero">#{{ pokemon.numero }}</h1>
           <img :src="pokemon.img" alt="">
-          <h1>{{ pokemon.nombre }}</h1>
-          <h1>Tipo: {{ pokemon.tipo_pk.join(', ') }}</h1>
+          <h1 style="color: black;">{{ pokemon.nombre }}</h1>
+          <h1 style="color: black;">Tipo: {{ pokemon.tipo_pk.join(', ') }}</h1>
           <button @click="ObtenerUrlPokemon(pokemon)">Detalles</button>
         </div>
       </div>
@@ -520,7 +520,7 @@ button:hover {
 }
 
 .poison.ground {
-  background: linear-gradient(to bottom, rgb(205, 152, 255), rgb(0, 0, 0));
+  background: linear-gradient(to bottom, rgb(205, 152, 255), rgb(128, 119, 119));
 }
 
 .poison.flying {
