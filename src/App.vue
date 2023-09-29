@@ -5,6 +5,12 @@
         <div id="encabezao">
           <h1 id="poke">POKEDEX</h1>
         </div>
+        <select v-model="filtroTipo" class="custom-select">
+          <option value="">Todos los tipos</option>
+          <option v-for="(tipo, index) in tiposPokemon" :key="index" :value="tipo">
+            {{ tipo }}
+          </option>
+        </select>
         <div class="input__container">
           <div class="shadow__input"></div>
           <button class="input__button__shadow">
@@ -28,9 +34,9 @@
         </div>
       </div>
       <div>
-        <button @click="cargarMasPokemones(50)">Cargar más...</button>
+        <button @click="cargarMasPokemones(50)" v-if="!searchTerm">Cargar más...</button>
       </div>
-
+  
     </div>
     <div class="estadisticas" v-if="mostrardos">
       <div id="contenidopokemon">
@@ -47,7 +53,7 @@
           {{ item }}
         </h1>
       </div>
-
+  
       <div id="estat">
         <div id="esta">
           <h1>Estadisticas</h1>
@@ -120,12 +126,33 @@ let mostrar = ref(true)
 let mostrardos = ref(false)
 let pokemonList = ref([]);
 let searchTerm = ref('');
+let filtroTipo = ref(''); // Inicialmente no se ha seleccionado ningún tipo
 
 const filteredPokemonList = computed(() => {
-  return pokemonList.value.filter((pokemon) => {
-    return pokemon.nombre.toLowerCase().includes(searchTerm.value.toLowerCase());
-  });
+  if (!filtroTipo.value) {
+    return pokemonList.value.filter((pokemon) => {
+      return pokemon.nombre.toLowerCase().includes(searchTerm.value.toLowerCase());
+    });
+  } else {
+    return pokemonList.value.filter((pokemon) => {
+      return (
+        pokemon.nombre.toLowerCase().includes(searchTerm.value.toLowerCase()) &&
+        pokemon.tipo_pk.includes(filtroTipo.value)
+      );
+    });
+  }
 });
+
+let tiposPokemon = computed(() => {
+  const tipos = new Set();
+  pokemonList.value.forEach((pokemon) => {
+    pokemon.tipo_pk.forEach((tipo) => {
+      tipos.add(tipo);
+    });
+  });
+  return Array.from(tipos);
+});
+
 
 async function ObtenerUrlPokemon(pokemon) {
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.numero}`)
@@ -247,6 +274,34 @@ function getPokemonCardClasses(pokemon) {
   justify-content: center;
   align-items: center;
 }
+
+.custom-select {
+  width: 200px; 
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  background-color: white; 
+  background-repeat: no-repeat;
+  background-position: 95% center; 
+}
+
+
+
+.custom-select:hover {
+  border-color: rgb(3, 23, 244); 
+  border-width: 5px; 
+}
+
+
+
+.custom-select:focus {
+  border-color: #007BFF; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
 
 .input__container {
   position: relative;
@@ -511,19 +566,20 @@ button:hover {
   color: black;
 }
 
-.ghost{
+.ghost {
   background-color: white;
   color: black;
 }
 
-.ice{
+.ice {
   background-color: aqua;
   color: black;
 }
 
-.steel{
+.steel {
   background-color: gray;
 }
+
 .water.grass {
   background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(137, 255, 137));
 }
@@ -584,15 +640,15 @@ button:hover {
   background: linear-gradient(to bottom, rgb(35, 130, 255), rgb(205, 152, 255));
 }
 
-.ghost.poison{
+.ghost.poison {
   background: linear-gradient(to bottom, white, rgb(205, 152, 255));
 }
 
-.water.ice{
+.water.ice {
   background: linear-gradient(to bottom, rgb(35, 130, 255), aqua);
 }
 
-.electric.steel{
+.electric.steel {
   background: linear-gradient(to bottom, yellow, gray);
 }
 
@@ -624,9 +680,8 @@ button:hover {
   color: white;
 }
 
-#tipocolor{
+#tipocolor {
   border-radius: 5px;
   padding: 5px;
 }
-
 </style>
